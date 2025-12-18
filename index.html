@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fleur Eternelle | Timeless Flowers</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #fffaf7;
+    color: #333;
+}
+
+/* Header */
+header {
+    background: #f6d1dc;
+    padding: 20px;
+    text-align: center;
+}
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+/* Hero */
+.hero {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+/* Sections */
+.section {
+    padding: 50px 20px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* Products */
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+}
+
+/* Card */
+.card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.1);
+}
+
+/* Slider */
+.slider-wrapper {
+    position: relative;
+    height: 260px;
+    overflow: hidden;
+}
+.slider {
+    display: flex;
+    height: 100%;
+}
+.slide {
+    min-width: 100%;
+    height: 100%;
+}
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Arrows */
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.4);
+    color: white;
+    border: none;
+    font-size: 22px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.arrow.left { left: 10px; }
+.arrow.right { right: 10px; }
+
+/* Card info */
+.card-info {
+    padding: 15px;
+    text-align: center;
+}
+
+/* Buttons */
+.btn {
+    padding: 10px 20px;
+    background: linear-gradient(135deg,#e89bb5,#f6b8cc);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    margin: 5px;
+}
+.btn.small {
+    padding: 6px 14px;
+    font-size: 12px;
+}
+
+/* Cart */
+.cart {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.1);
+}
+
+/* Inputs */
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+/* GCash */
+#gcashBox {
+    display: none;
+    background: #fff0f5;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+/* Confirmation */
+#confirmation {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+}
+#confirmation div {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+/* Footer */
+footer {
+    background: #f6d1dc;
+    padding: 20px;
+    text-align: center;
+    margin-top: 50px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Fleur Eternelle</h1>
+    <nav>
+        <a href="#shop">Shop</a>
+        <a href="#order">Order</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+    <h2>Timeless Flowers for Every Moment</h2>
+    <p>Fresh, handcrafted floral arrangements made with love.</p>
+</section>
+
+<!-- Shop -->
+<section id="shop" class="section">
+<h2>Our Flowers</h2>
+<div class="products">
+
+<!-- ROSES -->
+<div class="card">
+    <div class="slider-wrapper" data-slider>
+        <button class="arrow left">‹</button>
+        <div class="slider">
+            <div class="slide"><img src="images/roses-red.jpg"></div>
+            <div class="slide"><img src="images/roses-blue.jpg"></div>
+        </div>
+        <button class="arrow right">›</button>
+    </div>
+    <div class="card-info">
+        <h3>Roses</h3>
+        <button class="btn" onclick="addToCart('Roses - Red')">Add Red</button>
+        <button class="btn" onclick="addToCart('Roses - Blue')">Add Blue</button>
+    </div>
+</div>
+
+<!-- HIBISCUS -->
+<div class="card">
+    <div class="slider-wrapper" data-slider>
+        <button class="arrow left">‹</button>
+        <div class="slider">
+            <div class="slide"><img src="images/hibiscus-red.jpg"></div>
+            <div class="slide"><img src="images/hibiscus-violet.jpg"></div>
+            <div class="slide"><img src="images/hibiscus-blue.jpg"></div>
+        </div>
+        <button class="arrow right">›</button>
+    </div>
+    <div class="card-info">
+        <h3>Hibiscus</h3>
+        <button class="btn" onclick="addToCart('Hibiscus - Red')">Red</button>
+        <button class="btn" onclick="addToCart('Hibiscus - Violet')">Violet</button>
+        <button class="btn" onclick="addToCart('Hibiscus - Blue')">Blue</button>
+    </div>
+</div>
+
+<!-- TULIPS (no arrows) -->
+<div class="card">
+    <div class="slider-wrapper">
+        <div class="slider">
+            <div class="slide"><img src="images/tulips-violet.jpg"></div>
+        </div>
+    </div>
+    <div class="card-info">
+        <h3>Tulips</h3>
+        <button class="btn" onclick="addToCart('Tulips - Violet')">Add Violet</button>
+    </div>
+</div>
+
+<!-- KEYCHAIN -->
+<div class="card">
+    <img src="images/keychain.jpg" style="width:100%;height:260px;object-fit:cover">
+    <div class="card-info">
+        <h3>Keychain</h3>
+        <button class="btn" onclick="addToCart('Keychain')">Add to Cart</button>
+    </div>
+</div>
+
+</div>
+</section>
+
+<!-- Order -->
+<section id="order" class="section">
+<h2>Your Order</h2>
+<div class="cart">
+    <div id="cartItems">No items selected.</div>
+
+    <select id="payment" onchange="handlePayment()">
+        <option value="">Select Payment</option>
+        <option value="gcash">GCash</option>
+        <option value="cod">Cash on Delivery</option>
+    </select>
+
+    <div id="gcashBox">
+        <p><strong>Scan to Pay via GCash</strong></p>
+        <img src="images/gcash.png" width="200">
+    </div>
+
+    <button class="btn" id="orderBtn" onclick="placeOrder()" disabled>
+        Place Order
+    </button>
+</div>
+</section>
+
+<!-- About Us (moved below order) -->
+<section id="about" class="section">
+<h2>About Us</h2>
+<p>Fleur Eternelle creates timeless floral arrangements for every special moment. We handpick the freshest flowers and design each bouquet with love and care, ensuring your gift is always unforgettable.</p>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="section">
+<h2>Contact Us</h2>
+<input placeholder="Your Name">
+<input type="email" placeholder="Your Email">
+<textarea placeholder="Your Message"></textarea>
+<button class="btn">Send Message</button>
+</section>
+
+<footer>
+    <p>Payment: GCash | Cash on Delivery</p>
+    <p>© 2025 Fleur Eternelle</p>
+</footer>
+
+<div id="confirmation">
+<div>
+    <h2>🌸 Order Confirmed!</h2>
+    <p>Your flowers will be delivered with love.</p>
+    <button class="btn" onclick="confirmation.style.display='none'">Close</button>
+</div>
+</div>
+
+<script>
+/* SLIDER LOGIC */
+document.querySelectorAll('[data-slider]').forEach(wrapper => {
+    const slides = wrapper.querySelectorAll('.slide');
+    const left = wrapper.querySelector('.left');
+    const right = wrapper.querySelector('.right');
+    let index = 0;
+
+    function showSlide(i) {
+        slides.forEach((s, idx) => s.style.display = idx === i ? 'block' : 'none');
+    }
+
+    left.onclick = () => {
+        index = (index - 1 + slides.length) % slides.length;
+        showSlide(index);
+    };
+    right.onclick = () => {
+        index = (index + 1) % slides.length;
+        showSlide(index);
+    };
+
+    showSlide(index);
+});
+
+/* CART */
+let cart = {};
+const prices = {
+    "Roses - Red": 1200,
+    "Roses - Blue": 1300,
+    "Hibiscus - Red": 800,
+    "Hibiscus - Violet": 850,
+    "Hibiscus - Blue": 900,
+    "Tulips - Violet": 950,
+    "Keychain": 1000
+};
+
+function addToCart(item) {
+    cart[item] = (cart[item] || 0) + 1;
+    updateCart();
+}
+
+function removeItem(item) {
+    delete cart[item];
+    updateCart();
+}
+
+function updateCart() {
+    const div = document.getElementById("cartItems");
+    if (!Object.keys(cart).length) {
+        div.innerHTML = "No items selected.";
+        return;
+    }
+
+    let total = 0;
+    let html = "<ul style='list-style:none;padding:0'>";
+
+    for (let item in cart) {
+        let qty = cart[item];
+        let subtotal = qty * prices[item];
+        total += subtotal;
+
+        html += `
+        <li>
+            <strong>${item}</strong><br>
+            Qty: ${qty} × ₱${prices[item]} = ₱${subtotal}<br>
+            <button class="btn small" onclick="removeItem('${item}')">Remove</button>
+            <hr>
+        </li>`;
+    }
+
+    html += `<strong>Total: ₱${total}</strong>`;
+    div.innerHTML = html;
+}
+
+function handlePayment() {
+    gcashBox.style.display = payment.value === "gcash" ? "block" : "none";
+    orderBtn.disabled = !payment.value;
+}
+
+function placeOrder() {
+    if (!Object.keys(cart).length) return alert("Add items first 🌸");
+    confirmation.style.display = "flex";
+    cart = {};
+    updateCart();
+    payment.value = "";
+    orderBtn.disabled = true;
+    gcashBox.style.display = "none";
+}
+</script>
+
+</body>
+</html>
